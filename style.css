@@ -1,0 +1,12 @@
+body {
+	background-color:#f4f4f4;
+}
+
+table {
+	padding:0px;
+	margin-left:-3px;
+}
+
+#result {
+	display: none;
+}
