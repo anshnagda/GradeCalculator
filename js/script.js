@@ -7,9 +7,8 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
-
+let table = document.querySelector('.table');
 // selects some HTML elements
-let table = document.querySelector('.courseTable');
 let addButton = document.getElementById('addMoreButton');
 let submitButton = document.getElementById('subButton');
 
