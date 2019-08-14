@@ -7,17 +7,10 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
-
-<<<<<<< HEAD
 let table = document.querySelector('.table');
-||||||| merged common ancestors
-let table = document.querySelector('.courseTable');
-=======
 // selects some HTML elements
-let table = document.querySelector('.courseTable');
 let addButton = document.getElementById('addMoreButton');
 let submitButton = document.getElementById('subButton');
->>>>>>> 7a35dcc0d5ac10f01dae125766bf50e8bbc5521b
 
 // adds a new row to the table, increasing the number of assignments
 function addRow() {
