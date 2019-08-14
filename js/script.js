@@ -1,16 +1,26 @@
+// HELPER FUNCTIONS
+
+// converts HTML string to Node
 function htmlToElement(html) {
     var template = document.createElement('template');
-    html = html.trim();
-    template.innerHTML = html;
+    template.innerHTML = html.trim();
     return template.content.firstChild;
 }
 
-let boxText = '<li> <input type="number"> <input type="number"> <button type="button"> Delete Row </button></li>';
 
+<<<<<<< HEAD
 let table = document.querySelector('.table');
+||||||| merged common ancestors
+let table = document.querySelector('.courseTable');
+=======
+// selects some HTML elements
+let table = document.querySelector('.courseTable');
+let addButton = document.getElementById('addMoreButton');
+let submitButton = document.getElementById('subButton');
+>>>>>>> 7a35dcc0d5ac10f01dae125766bf50e8bbc5521b
 
-
-function addElement() {
+// adds a new row to the table, increasing the number of assignments
+function addRow() {
 	let newRow = table.insertRow();
 	let cel1 = newRow.insertCell();
 	let cel2 = newRow.insertCell();
@@ -23,24 +33,20 @@ function addElement() {
 	cel3.appendChild(cel3button);
 }
 
+// adds functionality of clicking the "Add Assignment" button
+addButton.addEventListener('click', addRow);
+
+// creates 5 initial rows
 window.onload = function() {
   for(let i = 0; i < 5; i++) {
-  	addElement();
+  	addRow();
   }
 };
 
-let addButton = document.getElementById('addMoreButton');
-addButton.addEventListener('click', addElement);
-
-
+// does the math and displays the results
 function computeResult() {
 	let desiredPercentage = document.getElementById('desiredP').value;
 	var rows = [].slice.call(table.rows);
-
-	if(rows.length < 2) {
-		alert('Enter at least one row.');
-		return;
-	}
 
 	let totalPercentage = 0.0;
 	let totalMaxPercentage = 0.0;
@@ -48,33 +54,45 @@ function computeResult() {
 	for(let index = 1; index < rows.length; index++) {
 		let assignment = rows[index].cells[0].firstElementChild.value;
 		let weight = rows[index].cells[1].firstElementChild.value;
-		if(assignment === '' || weight === '') {
-			alert('Please fill out all existing rows.');
-			return;
+
+		// if exactly one of the fields is empty, then error
+		if(assignment == '' || weight == '') {
+			if(assignment != '' || weight != '') {
+				alert('Please fill out all existing rows.');
+				return;
+			}
+			assignemnt = 0.0;
+			weight = 0.0;
 		}
 
 		totalPercentage += assignment * weight / 100.0;
 		totalMaxPercentage += (weight * 1.0);
 	}
 
-	let currentPercentage = totalPercentage / totalMaxPercentage*100.0;
-	let requiredPercentage = (desiredPercentage - totalPercentage)/(1.0-totalMaxPercentage/100.0);
+	if(totalMaxPercentage < 0.001) {
+		alert('Please enter at least one assignment');
+	}
 
-	let result = document.getElementById('result');
 	if(totalMaxPercentage > 100.0) {
 		alert('Total Percentage is more than 100%.');
 		return;
 	}
 
-	if(totalMaxPercentage == 100.0) {
+	let currentPercentage = totalPercentage / totalMaxPercentage * 100.0;
+	let requiredPercentage = (desiredPercentage - totalPercentage)/(1.0-totalMaxPercentage/100.0);
+
+	let result = document.getElementById('result');
+	
+
+	if(totalMaxPercentage == 100.0 || desiredPercentage == '') {
 		result.innerHTML = `You currently have ${Math.round( currentPercentage * 10) / 10}%.`;
 	} else {
 		result.innerHTML = `You currently have ${Math.round( currentPercentage * 10) / 10}%. You need ${Math.round( requiredPercentage * 10) / 10}% in the rest of the course to achieve ${Math.round( desiredPercentage * 10) / 10}%.`;	
 	}
-
 	
+	// show the result element
 	result.style.display = 'block';
 }
 
-let submitButton = document.getElementById('subButton');
+// adds functionality of clicking the "submit" button
 submitButton.addEventListener('click', (e) => {e.preventDefault(); computeResult();});
