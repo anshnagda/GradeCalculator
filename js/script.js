@@ -7,7 +7,7 @@ function htmlToElement(html) {
 
 let boxText = '<li> <input type="number"> <input type="number"> <button type="button"> Delete Row </button></li>';
 
-let table = document.querySelector('.courseTable');
+let table = document.querySelector('.table');
 
 
 function addElement() {
