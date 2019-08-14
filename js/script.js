@@ -10,6 +10,10 @@ function htmlToElement(html) {
 
 let table = document.querySelector('.table');
 
+// selects some HTML elements
+let addButton = document.getElementById('addMoreButton');
+let submitButton = document.getElementById('subButton');
+
 // adds a new row to the table, increasing the number of assignments
 function addRow() {
 	let newRow = table.insertRow();
