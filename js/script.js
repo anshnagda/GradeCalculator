@@ -7,10 +7,8 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
+
 let table = document.querySelector('.table');
-// selects some HTML elements
-let addButton = document.getElementById('addMoreButton');
-let submitButton = document.getElementById('subButton');
 
 // adds a new row to the table, increasing the number of assignments
 function addRow() {
@@ -84,8 +82,7 @@ function computeResult() {
 	}
 	
 	// show the result element
-	result.classList.remove('d-none');
-	result.classList.add('d-block')
+	result.style.display = 'block';
 }
 
 // adds functionality of clicking the "submit" button
