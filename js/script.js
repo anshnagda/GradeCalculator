@@ -84,7 +84,8 @@ function computeResult() {
 	}
 	
 	// show the result element
-	result.style.display = 'block';
+	result.classList.remove('d-none');
+	result.classList.add('d-block')
 }
 
 // adds functionality of clicking the "submit" button
