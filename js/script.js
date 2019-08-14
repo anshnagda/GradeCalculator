@@ -23,7 +23,7 @@ function addRow() {
 	
 	cel1.innerHTML = '<input type="number" class="percentageBox">';
 	cel2.innerHTML = '<input type="number" class="percentageBox">';
-	cel3button = htmlToElement('<button type="button" class="delButton"> Delete Row </button>');
+	cel3button = htmlToElement('<button type="button" class="delButton btn btn-dark""> Delete Row </button>');
 	cel3button.addEventListener('click', (e) => { table.deleteRow(newRow.rowIndex) });
 	cel3.appendChild(cel3button);
 }
