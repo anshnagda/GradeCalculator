@@ -65,6 +65,7 @@ function computeResult() {
 
 	if(totalMaxPercentage < 0.001) {
 		alert('Please enter at least one assignment');
+		return;
 	}
 
 	if(totalMaxPercentage > 100.0) {
