@@ -7,7 +7,7 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
-
+let idNum = 1;
 let table = document.querySelector('.table');
 
 // selects some HTML elements
@@ -21,11 +21,13 @@ function addRow() {
 	let cel2 = newRow.insertCell();
 	let cel3 = newRow.insertCell();
 	
-	cel1.innerHTML = '<input type="number" class="percentageBox">';
-	cel2.innerHTML = '<input type="number" class="percentageBox">';
-	cel3button = htmlToElement('<button type="button" class="delButton btn btn-dark""> Delete Row </button>');
+	cel1.innerHTML = '<input type="text" id = "assignment'+idNum+ '" class="percentageBox from-control" oninput="onlyNums(this.value, this.id)"">';
+	cel2.innerHTML = '<input type="text" id = "percent' +idNum +'" class="percentageBox form-control" oninput="onlyNums(this.value, this.id)"">';
+	cel3button = htmlToElement('<button type="button" class="delButton btn btn-dark""> Delete Assignment </button>');
 	cel3button.addEventListener('click', (e) => { if(table.rows.length > 2)table.deleteRow(newRow.rowIndex) });
 	cel3.appendChild(cel3button);
+
+	idNum += 1;
 }
 
 // adds functionality of clicking the "Add Assignment" button
